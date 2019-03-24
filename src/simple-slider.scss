@@ -20,6 +20,30 @@ html {
             position: absolute;
         }
     }
+    .slider-pager {
+        position: absolute;
+        top: 45%;
+        width: 100%;
+        .pager-btn-prev, .pager-btn-next {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            font-size: 1.3rem;
+            text-decoration: none;
+            color: #ffffff;
+            text-align: center;
+            display: inline-block;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.75);
+        }
+        .pager-btn-prev {
+            left: 2.5%;
+        }
+        .pager-btn-next {
+            right: 2.5%;
+        }
+    }
     .pager-nav {
         position: absolute;
         width: 100%;
