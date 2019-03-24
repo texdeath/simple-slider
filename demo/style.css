@@ -1,0 +1,17 @@
+.heading, .desc {
+    text-align: center;
+}
+
+code {
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+    width: 50%;
+    margin: 1rem auto;
+    display: block;
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    font-size: 85%;
+    line-height: 1.45;
+    overflow: auto;
+    word-break: normal;
+    padding: 1rem;
+}

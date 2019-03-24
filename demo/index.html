@@ -1,0 +1,104 @@
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="./simple-slider.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./simple_responsible_slider.js"></script>
+    <title>SImple Slider Sample</title>
+</head>
+
+<body>
+    <main class="container">
+        <section>
+            <h1 class="heading">Simple Slider</h1>
+            <div class="simple-slider">
+            </div>
+            <h2 class="heading">Usage</h2>
+            <code>
+                npm install simple-slider
+                or yarn add simple-slider
+            </code>
+            <h2 class="heading">HTML</h2>
+            <pre><code>&lt;div class=&quot;simple-slider&quot;&gt;&lt;/div&gt;
+...
+&lt;script&gt;
+    const slider = new lib.Slider(&quot;.simple-slider&quot;, {
+                        width: 950,
+                        height: 333,
+                        easing: &#039;easeInBack&#039;,
+                        autoStart: true,
+                        pager : true,
+                        navigation : true,
+                        random : true,
+                        responsible : true,
+                        images: [{
+                            path: &quot;./assets/1.jpg&quot;,
+                            url: &quot;https://google.co.jp&quot;,
+                        },
+                        {
+                            path: &quot;./assets/2.jpg&quot;,
+                            url: &quot;https://yahoo.co.jp&quot;,
+                        },
+                        {
+                            path: &quot;./assets/3.jpg&quot;,
+                            url: &quot;https://amazon.co.jp&quot;,
+                        },
+                        {
+                            path: &quot;./assets/4.jpg&quot;,
+                            url: &quot;https://www.paypal.com/jp/home&quot;,
+                        },
+                        {
+                            path: &quot;./assets/5.jpg&quot;,
+                            url: &quot;https://www.microsoft.com/ja-jp&quot;,
+                        }]
+                    });
+    slider.getSlider()
+&lt;/script&gt;
+        </code>
+    </pre>
+    <h2 class="heading">Github</h2>
+    <p class="desc">
+        <a href="https://github.com/texdeath/simple-slider" target="_blank">
+        https://github.com/texdeath/simple-slider</a>
+    </p>
+    </section>
+    </main>
+</body>
+<script>
+    const slider = new lib.Slider(".simple-slider", {
+        width: 700,
+        height: 300,
+        easing: 'easeInBack',
+        autoStart: true,
+        pager : true,
+        navigation : true,
+        random : true,
+        responsible : true,
+        images: [{
+            path: "https://picsum.photos/700/300?image=0",
+            url: "https://google.co.jp",
+        },
+        {
+            path: "https://picsum.photos/700/300?image=100",
+            url: "https://yahoo.co.jp",
+        },
+        {
+            path: "https://picsum.photos/700/300?image=200",
+            url: "https://amazon.co.jp",
+        },
+        {
+            path: "https://picsum.photos/700/300?image=400",
+            url: "https://www.paypal.com/jp/home",
+        },
+        {
+            path: "https://picsum.photos/700/300?image=500",
+            url: "https://www.microsoft.com/ja-jp",
+        }]
+    });
+    slider.getSlider()
+</script>
+
+</html>
