@@ -30,10 +30,10 @@ export default class Pager {
 
      /**
      * ページャーの要素をセットする
-     * @param {HTMLElement} element - ページャーのコンテナ要素
+     * @param {HTMLElement} currentElement - ページャーのコンテナ要素
      */
-    setPager(element) {
-        element.parentNode.insertBefore(this.element, element.nextSibling);
+    setPager(currentElement) {
+        currentElement.appendChild(this.element);
     }
 
      /**
