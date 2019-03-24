@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { transition } from './transitions';
 
 export default class Asset {
@@ -8,8 +9,9 @@ export default class Asset {
      * @param {number} height - 画像コンテナの縦幅
      * @param {Array<Object>} images - 画像のパス・リンク先URL
      * @param {string} easing - Easing Functionの設定
+     * @param {Boolean} random - 画像シャッフルの設定
      */
-    constructor(element, width, height, images, easing, direction) {
+    constructor(element, width, height, images, easing, random) {
         this._element = element;
         this._width = width;
         this._height = height;
@@ -17,6 +19,7 @@ export default class Asset {
         this._easing = easing;
         this._sliderContainer = document.createElement('div');
         this._sliderContainer.classList.add('slider-container');
+        this._random = random;
     }
 
     /**
@@ -37,6 +40,9 @@ export default class Asset {
      * @return {Void}
      */
     createImageNodes() {
+        if(this._random) {
+            this._images = _.shuffle(this._images);
+        }
         this._images.forEach((image, index) => {
             const contentNode = document.createElement('div');
             const linkNode = document.createElement('a');
