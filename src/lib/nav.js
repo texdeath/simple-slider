@@ -64,6 +64,7 @@ export default class Nav {
      * @param {number} currentIndex - スライダーの現在位置
      */
     update(currentIndex) {
+        console.log(currentIndex);
         const navBtn = this.elem.getElementsByTagName('a');
         //一旦全てのナビボタンをinactiveにする
         for (let i = 0; i < navBtn.length; i++) {

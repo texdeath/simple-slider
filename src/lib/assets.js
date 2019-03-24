@@ -11,7 +11,7 @@ export default class Asset {
      * @param {string} easing - Easing Functionの設定
      * @param {Boolean} random - 画像シャッフルの設定
      */
-    constructor(element, width, height, images, easing, random) {
+    constructor(element, width, height, images, easing, random, responsible) {
         this.element = element;
         this.width = width;
         this.height = height;
@@ -20,6 +20,11 @@ export default class Asset {
         this.sliderContainer = document.createElement('div');
         this.sliderContainer.classList.add('slider-container');
         this.random = random;
+        this.responsible = responsible;
+    }
+
+    get _sliderContainer() {
+        return this.sliderContainer;
     }
 
     /**
@@ -27,11 +32,19 @@ export default class Asset {
      * @return {Void}
      */
     createSliderNodes() {
-        this.element.style.cssText = `
+        if(this.responsible) {
+            this.element.style.cssText = `
+            max-width: ${this.width}px;
+            min-height : ${this.height}px;
+            overflow: hidden;
+        `;
+        } else {
+            this.element.style.cssText = `
             width: ${this.width}px;
             height : ${this.height}px;
             overflow: hidden;
         `;
+        }
         this.createImageNodes();
     }
 
@@ -53,11 +66,23 @@ export default class Asset {
             linkNode.setAttribute('href', image.url);
             imageNode.setAttribute('src', image.path);
 
-            contentNode.style.cssText = `
-                width: ${this._width}px;
-                height : ${this._height}px;
+            if(this.responsible) {
+                contentNode.style.cssText = `
+                width: ${this.width}px;
+                height : ${this.height}px;
             `;
-
+                imageNode.style.cssText = `
+                width: 100%;
+                height : ${this.height}px;
+                object-fit: cover;
+                object-position: 100% 100%;
+            `;
+            } else {
+                contentNode.style.cssText = `
+                width: ${this.width}px;
+                height : ${this.height}px;
+            `;
+            }
             this.setContainerPotision(contentNode, index);
 
             linkNode.appendChild(imageNode);

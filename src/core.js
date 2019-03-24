@@ -28,6 +28,7 @@ export default class SimpleSlider {
         this._navigation = true,
         this._prevText = '<';
         this._nextText = '>';
+        this._responsible = true;
         // HTMLでのインスタンス呼び出し時に初期値がセットされていないものは、コンストラクタの初期値を利用する
         Object.keys(options).forEach(opt => {
             if(options[opt] !== undefined) {
@@ -40,12 +41,21 @@ export default class SimpleSlider {
      * インスタンス初期化
      */
     init() {
-        const asset = new Asset(this._element, this._width, this._height, this._images, this._easing, this._random);
+        const asset = new Asset(
+            this._element,
+            this._width,
+            this._height,
+            this._images,
+            this._easing,
+            this._random,
+            this._responsible
+            );
         const pager = new Pager(this._prevText, this._nextText);
         const timer = new Timer();
         const nav = new Nav(this._element, this._images);
-        const move = new Move(this._element, this._current);
+        const move = new Move(asset._sliderContainer, this._element, this._current, this._easing);
         asset.createSliderNodes();
+        move.setupListener(timer, nav, this._time, this._navigation);
         // 自動スタート有効判定
         if(this._autoStart) {
             timer.start(move, nav, this._time, this._navigation)

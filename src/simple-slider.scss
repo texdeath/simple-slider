@@ -26,6 +26,7 @@ html {
         width: 100%;
         .pager-btn-prev, .pager-btn-next {
             position: absolute;
+            z-index: 100;
             width: 60px;
             height: 60px;
             line-height: 60px;
@@ -64,16 +65,4 @@ html {
             }
         }
     }
-}
-
-pre {
-    width: 50%;
-    margin: 1rem auto;
-    display: block;
-    background-color: #f6f8fa;
-    border-radius: 3px;
-    font-size: 85%;
-    line-height: 1.45;
-    overflow: auto;
-    padding: 16px;
 }
