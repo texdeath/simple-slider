@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+$bg-color: white;
+
+html {
+  body {
+    background: rgba( $bg-color, 1 );
+  }
+}
+
+.simple-slider {
+    position: relative;
+    margin: auto;
+    background: #000;
+    .slider-container {
+        position: relative;
+        left: 0%;
+        top: 0%;
+        .slider-content {
+            position: absolute;
+        }
+    }
+}
+
+pre {
+    width: 50%;
+    margin: 1rem auto;
+    display: block;
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    font-size: 85%;
+    line-height: 1.45;
+    overflow: auto;
+    padding: 16px;
+}
