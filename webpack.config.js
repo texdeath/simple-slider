@@ -1,7 +1,8 @@
 const path = require("path");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const StatsPlugin = require('stats-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const enabledSourceMap = (process.env.NODE_ENV === 'development');
-
 module.exports = {
     mode: process.env.NODE_ENV,
     entry: {
@@ -64,6 +65,10 @@ module.exports = {
     },
     plugins: [
         new ExtractTextPlugin('simple-slider.css'),
+        new BundleAnalyzerPlugin(),
+        new StatsPlugin('stats.json', {
+          chunkModules: true,
+        }),
     ],
     devtool: 'inline-source-map',
     devServer: {

@@ -139,7 +139,6 @@ export default class Move {
             setTimeout(() => {
                 this.containerElement.style.transition = transition[this.easing];
             }, 500);
-            console.log(this.containerElement.style.transition)
         }
     }
     //スライドの移動範囲を制限するメソッド

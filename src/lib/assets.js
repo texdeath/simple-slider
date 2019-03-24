@@ -1,6 +1,5 @@
-import _ from 'lodash';
+import shuffle from 'lodash.shuffle';
 import { transition } from './transitions';
-
 export default class Asset {
     /**
      * DOM, 画像生成用クラスのコンストラクタ
@@ -54,7 +53,7 @@ export default class Asset {
      */
     createImageNodes() {
         if(this.random) {
-            this.images = _.shuffle(this.images);
+            this.images = shuffle(this.images);
         }
         this.images.forEach((image, index) => {
             const contentNode = document.createElement('div');
@@ -89,7 +88,6 @@ export default class Asset {
             contentNode.appendChild(linkNode);
             this.sliderContainer.appendChild(contentNode);
             this.sliderContainer.style.transition = transition[this.easing]
-
         })
         this.element.appendChild(this.sliderContainer);
     }
