@@ -15,10 +15,10 @@ export default class Timer {
      */
     start(move, nav, time, isNavigation) {
         this.timer = setInterval(() => {
-            move.current +=1;
-            move.moveSlider(move.current)
+            move.currentIndex +=1;
+            move.moveSlider(move.currentIndex)
             if(isNavigation) {
-                nav.update(move.current);
+                nav.update(move.currentIndex);
             }
         },time)
     }

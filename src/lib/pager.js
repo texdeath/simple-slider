@@ -45,7 +45,7 @@ export default class Pager {
      * @param {Boolean} isNavigation - 初期設定でナビゲーションが有効になっているかどうか
      */
     setupListener(move, nav, timer, time, isNavigation) {
-        this.setPager(move._element);
+        this.setPager(move.element);
         const pagerBtn = this.element.getElementsByTagName('a');
         for (let i = 0; i < pagerBtn.length; i++) {
             pagerBtn[i].addEventListener("click", e => {
@@ -55,14 +55,14 @@ export default class Pager {
                 timer.stop();
                 //クリックしたページャーボタンが.pager-btn-prevであれば一つ前のスライドに切り替える
                 if (target.classList.contains('pager-btn-prev')) {
-                    move.current = move.current - 1;
+                    move.currentIndex = move.currentIndex - 1;
                 //.pager-btn-nextであれば一つ後のスライドに切り替える
                 } else {
-                    move.current = move.current + 1;
+                    move.currentIndex = move.currentIndex + 1;
                 }
-                move.moveSlider(move.current);
+                move.moveSlider(move.currentIndex);
                 if(isNavigation) {
-                    nav.update(move.current);
+                    nav.update(move.currentIndex);
                 }
                 // タイマー再開
                 timer.start(move, nav, time, isNavigation);

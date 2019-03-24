@@ -53,7 +53,7 @@ export default class SimpleSlider {
         // ナビゲーション有効判定
         if(this._navigation) {
             nav.setNavigation(this._images.length)
-            nav.update(move.current);
+            nav.update(move.currentIndex);
             nav.setupListener(move, timer, this._time, this._navigation);
         }
         // ページャー有効判定

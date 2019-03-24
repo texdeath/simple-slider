@@ -12,14 +12,14 @@ export default class Asset {
      * @param {Boolean} random - 画像シャッフルの設定
      */
     constructor(element, width, height, images, easing, random) {
-        this._element = element;
-        this._width = width;
-        this._height = height;
-        this._images = images;
-        this._easing = easing;
-        this._sliderContainer = document.createElement('div');
-        this._sliderContainer.classList.add('slider-container');
-        this._random = random;
+        this.element = element;
+        this.width = width;
+        this.height = height;
+        this.images = images;
+        this.easing = easing;
+        this.sliderContainer = document.createElement('div');
+        this.sliderContainer.classList.add('slider-container');
+        this.random = random;
     }
 
     /**
@@ -27,9 +27,9 @@ export default class Asset {
      * @return {Void}
      */
     createSliderNodes() {
-        this._element.style.cssText = `
-            width: ${this._width}px;
-            height : ${this._height}px;
+        this.element.style.cssText = `
+            width: ${this.width}px;
+            height : ${this.height}px;
             overflow: hidden;
         `;
         this.createImageNodes();
@@ -40,10 +40,10 @@ export default class Asset {
      * @return {Void}
      */
     createImageNodes() {
-        if(this._random) {
-            this._images = _.shuffle(this._images);
+        if(this.random) {
+            this.images = _.shuffle(this.images);
         }
-        this._images.forEach((image, index) => {
+        this.images.forEach((image, index) => {
             const contentNode = document.createElement('div');
             const linkNode = document.createElement('a');
             const imageNode = document.createElement('img');
@@ -62,11 +62,11 @@ export default class Asset {
 
             linkNode.appendChild(imageNode);
             contentNode.appendChild(linkNode);
-            this._sliderContainer.appendChild(contentNode);
-            this._sliderContainer.style.transition = transition[this._easing]
+            this.sliderContainer.appendChild(contentNode);
+            this.sliderContainer.style.transition = transition[this.easing]
 
         })
-        this._element.appendChild(this._sliderContainer);
+        this.element.appendChild(this.sliderContainer);
     }
 
     setContainerPotision(content, index) {

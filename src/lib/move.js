@@ -7,17 +7,17 @@ export default class Move {
      * @param {Object} options - スライダーのオプション
      */
     constructor(element, current) {
-        this._element = element;
-        this._current = current;
+        this.element = element;
+        this.current = current;
     }
 
-    get current() {
-        return this._current;
+    get currentIndex() {
+        return this.current;
     }
 
-    set current(value) {
+    set currentIndex(value) {
         if(typeof value === 'number') {
-            this._current = value;
+            this.current = value;
         }
     }
     /**
@@ -33,8 +33,8 @@ export default class Move {
      * @returns {Void}
      */
     moveSlider(index) {
-        const container = this._element.getElementsByClassName('slider-container')[0];
-        const images = this._element.getElementsByTagName('img');
+        const container = this.element.getElementsByClassName('slider-container')[0];
+        const images = this.element.getElementsByTagName('img');
         const max = images.length - 1;
         if (index < 0) {
             index = max;
@@ -47,6 +47,6 @@ export default class Move {
         container.style.left = `${-100 * index}%`;
 
         //更新
-        this._current = index;
+        this.current = index;
     }
 }
