@@ -1,0 +1,33 @@
+{
+  "name": "simple-slider",
+  "version": "1.0.0",
+  "description": "simple slider.",
+  "main": "index.js",
+  "repository": "git@github.com:texdeath/simple-slider.git",
+  "author": "texdeath <texdeath@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production webpack --config webpack.config.js"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "stats-webpack-plugin": "^0.7.0",
+    "webpack": "^4.29.6",
+    "webpack-bundle-analyzer": "^3.1.0",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.0",
+    "js-easing-functions": "^1.0.3",
+    "lodash.shuffle": "^4.2.0"
+  }
+}
