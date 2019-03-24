@@ -59,14 +59,14 @@ export default class Move {
      */
     setupListener(timer, nav, time, isNavigation) {
         this.containerElement.addEventListener("mousedown", e => this.mouseDown(e));
-        document.body.addEventListener("mousemove", e => this.mouseMove(e));
-        document.body.addEventListener("mouseup", e => this.mouseUp(e, nav));
-        document.body.addEventListener("mouseleave", e => this.mouseUp(e, nav));
+        document.body.addEventListener("mousemove", e => this.mouseMove(e), {passive: false });
+        document.body.addEventListener("mouseup", e => this.mouseUp(e, nav), {passive: false });
+        document.body.addEventListener("mouseleave", e => this.mouseUp(e, nav), {passive: false });
 
         this.containerElement.addEventListener("touchstart", e => this.mouseDown(e));
-        document.body.addEventListener("touchmove", e => this.mouseMove(e));
-        document.body.addEventListener("touchend", e => this.mouseUp(e, nav));
-        document.body.addEventListener("touchleave", e => this.mouseUp(e, nav));
+        document.body.addEventListener("touchmove", e => this.mouseMove(e), {passive: false });
+        document.body.addEventListener("touchend", e => this.mouseUp(e, nav), {passive: false });
+        document.body.addEventListener("touchleave", e => this.mouseUp(e, nav), {passive: false });
 
         this.containerElement.addEventListener('mouseover', (e) => timer.stop());
         this.containerElement.addEventListener('mouseout', (e) => timer.start(this, nav, time, isNavigation));
