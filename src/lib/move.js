@@ -4,7 +4,7 @@ export default class Move {
     /**
      * コンストラクタ
      * @param {HTMLElement} element - スライダーを生成する要素
-     * @param {Object} options - スライダーのオプション
+     * @param {number} current - スライダーの現在位置
      */
     constructor(element, current) {
         this.element = element;
