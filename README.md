@@ -62,8 +62,7 @@ yarn add simple-responsible-slider # or npm install simple-responsible-slider
 |  navigation  |  `Boolean` | Wither to display navigation |
 |  random  |  `Boolean` | Arrange image paths randomly |
 |  responsible  |  `Boolean` | Corresponds to responsive |
-|  images  |  `Array<Object>` | path: Images
-Relative path. url: Images Link URL. |
+|  images  |  `Array<Object>` | path: Images Relative path. url: Images Link URL. |
 
 
 
