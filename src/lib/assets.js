@@ -65,6 +65,5 @@ export default class Asset {
 
     setContainerPotision(content, index) {
         content.style.left = `${100 * index}%`;
-
     }
 }

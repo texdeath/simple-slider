@@ -1,6 +1,6 @@
-import Asset from './lib/assets';
-import Pager from './lib/pager';
-export default class SimpleSlider {
+import Asset from './assets';
+import Pager from './pager';
+export default class Move {
     /**
      * コンストラクタ
      * @param {HTMLElement} element - スライダーを生成する要素
@@ -11,11 +11,11 @@ export default class SimpleSlider {
         this._current = current;
     }
 
-    get currentIndex() {
+    get current() {
         return this._current;
     }
 
-    set currentIndex(value) {
+    set current(value) {
         if(typeof value === 'number') {
             this._current = value;
         }
@@ -27,6 +27,11 @@ export default class SimpleSlider {
     initializeOptions(customOptions) {
     }
 
+    /**
+     * スライダーを動作させる処理
+     * @param {number} index - 現在のコンテンツのインデックス
+     * @returns {Void}
+     */
     moveSlider(index) {
         const container = this._element.getElementsByClassName('slider-container')[0];
         const images = this._element.getElementsByTagName('img');

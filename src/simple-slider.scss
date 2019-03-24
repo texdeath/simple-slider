@@ -20,6 +20,26 @@ html {
             position: absolute;
         }
     }
+    .pager-nav {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.75);
+        padding: 8px;
+        text-align: center;
+        .nav-btn {
+            display: inline-block;
+            margin: 0 5px;
+            background: #fff;
+            border-radius: 50%;
+            height: 20px;
+            width: 20px;
+            &.active {
+                background: #333;
+                cursor: default;
+            }
+        }
+    }
 }
 
 pre {
