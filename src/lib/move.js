@@ -123,11 +123,11 @@ export default class Move {
             //ドラッグ終了
             this.isDragging = false;
             const slidesWidth = this.containerElement.clientWidth;
-            //右へslidesWidth / 6より多くドラッグしていれば移動する
+            //右へslidesWidth / 4より多くドラッグしていれば移動する
             if (this.moveX > this.downX && Math.abs(this.differenceX) > slidesWidth / 4) {
                 this._current -= 1;
             }
-            //左へslidesWidth / 6より多くドラッグしていれば移動する
+            //左へslidesWidth / 4より多くドラッグしていれば移動する
             if (this.moveX < this.downX && Math.abs(this.differenceX) > slidesWidth / 4) {
                 this._current += 1;
             }
