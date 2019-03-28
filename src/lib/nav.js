@@ -2,10 +2,13 @@ export default class Nav {
     /**
      * コンストラクタ
      * @param {HTMLElement} currentElement - 親要素
-     * @param {HTMLElement} elem - ナビゲーション要素
+     * @param {number} time - スライダー画像の表示時間
+     * @param {Boolean} navigation - ナビゲーション表示可否設定
      */
-    constructor(currentElement) {
+    constructor(currentElement, time, navigation) {
         this.currentElement = currentElement;
+        this.time = this.time;
+        this.navigation = this.navigation;
         this.elem = document.createElement("nav");
         this.elem.classList.add('pager-nav');
     }
@@ -30,12 +33,10 @@ export default class Nav {
 
     /**
      * ナビゲーションをクリックできる状態にする
-     * @param {Move} move - Moveクラス
-     * @param {Timer} timer - Timerクラス
-     * @param {number} time - スライド時間
-     * @param {Boolean} isNavigation - 初期設定でナビゲーションが有効になっているかどうか
+     * @param {Move} move - スライダー移動用インスタンス
+     * @param {Timer} timer - タイマー管理用インスタンス
      */
-    setupListener(move, timer, time, isNavigation) {
+    setupListener(move, timer) {
         const navBtn = this.elem.getElementsByTagName('a');
 
         //ナビボタンをクリックするとクリックしたナビボタンと同じ番号のスライドに切り替える
@@ -54,7 +55,7 @@ export default class Nav {
                 //targetIndex番目のナビボタンをアクティブにする
                 this.update(targetIndex);
                 // タイマー再開
-                timer.start(move, this, time, isNavigation);
+                timer.start(move, this, this.time, this.navigation);
             });
         }
     }

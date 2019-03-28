@@ -3,10 +3,14 @@ export default class Pager {
      * コンストラクタ
      * @param {string} prevText - 戻るボタンのテキスト
      * @param {string} nextText - 次へボタンのテキスト
+     * @param {number} time - スライダー画像の表示時間
+     * @param {Boolean} navigation - ナビゲーション表示可否設定
      */
-    constructor(prevText, nextText) {
+    constructor(prevText, nextText, time, navigation) {
         this.prevText = prevText;
         this.nextText = nextText;
+        this.time = time;
+        this.navigation = navigation;
         this.element = this.initElement();
     }
 
@@ -38,13 +42,11 @@ export default class Pager {
 
      /**
      * ページャーをクリックできる状態にする
-     * @param {Move} move - Moveクラス
-     * @param {Nav} nav - Navクラス
-     * @param {Timer} timer - Timerクラス
-     * @param {number} time - スライド時間
-     * @param {Boolean} isNavigation - 初期設定でナビゲーションが有効になっているかどうか
+     * @param {Move} move - スライダー移動用インスタンス
+     * @param {Nav} nav - ナビゲーション用インスタンス
+     * @param {Timer} timer - タイマー管理用インスタンス
      */
-    setupListener(move, nav, timer, time, isNavigation) {
+    setupListener(move, nav, timer) {
         this.setPager(move.element);
         const pagerBtn = this.element.getElementsByTagName('a');
         for (let i = 0; i < pagerBtn.length; i++) {
@@ -61,11 +63,11 @@ export default class Pager {
                     move.currentIndex = move.currentIndex + 1;
                 }
                 move.moveSlider(move.currentIndex);
-                if(isNavigation) {
+                if(this.navigation) {
                     nav.update(move.currentIndex);
                 }
                 // タイマー再開
-                timer.start(move, nav, time, isNavigation);
+                timer.start(move, nav, this.time, this.navigation);
             });
         }
     }

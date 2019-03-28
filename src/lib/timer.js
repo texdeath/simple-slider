@@ -1,26 +1,28 @@
 export default class Timer {
     /**
      * コンストラクタ
+     * @param {number} time - スライダー画像の表示時間
+     * @param {Boolean} navigation - ナビゲーション表示可否設定
      */
-    constructor() {
+    constructor(time, navigation) {
         this.timer = null;
+        this.time = time;
+        this.navigation = navigation;
     }
 
      /**
      * タイマー有効化
-     * @param {Move} move - Moveクラス
-     * @param {Nav} nav - Navクラス
-     * @param {number} time - スライド時間
-     * @param {Boolean} isNavigation - 初期設定でナビゲーションが有効になっているかどうか
+     * @param {Move} move - スライダー移動用インスタンス
+     * @param {Timer} timer - タイマー管理用インスタンス
      */
-    start(move, nav, time, isNavigation) {
+    start(move, nav) {
         this.timer = setInterval(() => {
             move.currentIndex +=1;
             move.moveSlider(move.currentIndex)
-            if(isNavigation) {
+            if(this.navigation) {
                 nav.update(move.currentIndex);
             }
-        },time)
+        },this.time)
     }
 
     /**

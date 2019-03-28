@@ -50,25 +50,47 @@ export default class SimpleSlider {
             this._random,
             this._responsible
             );
-        const pager = new Pager(this._prevText, this._nextText);
-        const timer = new Timer();
-        const nav = new Nav(this._element, this._images);
-        const move = new Move(asset._sliderContainer, this._element, this._current, this._easing);
+        const pager = new Pager(
+            this._prevText,
+            this._nextText,
+            this._time,
+            this._navigation
+            );
+        const timer = new Timer(
+            this._time,
+            this._navigation
+        );
+        const nav = new Nav(
+            this._element,
+            this._images,
+            this._time,
+            this._navigation
+            );
+        const move = new Move(
+            asset.sliderContainer,
+            this._element,
+            this._current,
+            this._easing,
+            this._time,
+            this._navigation
+            );
+        // スライダー用ノード作成
         asset.createSliderNodes();
-        move.setupListener(timer, nav, this._time, this._navigation);
+        // イベントリスナ設定
+        move.setupListener(timer, nav);
         // 自動スタート有効判定
         if(this._autoStart) {
-            timer.start(move, nav, this._time, this._navigation)
+            timer.start(move, nav)
         }
         // ナビゲーション有効判定
         if(this._navigation) {
             nav.setNavigation(this._images.length)
             nav.update(move.currentIndex);
-            nav.setupListener(move, timer, this._time, this._navigation);
+            nav.setupListener(move, timer);
         }
         // ページャー有効判定
         if(this._pager) {
-            pager.setupListener(move, nav, timer, this._time, this._navigation);
+            pager.setupListener(move, nav, timer);
         }
     }
 

@@ -9,6 +9,7 @@ export default class Asset {
      * @param {Array<Object>} images - 画像のパス・リンク先URL
      * @param {string} easing - Easing Functionの設定
      * @param {Boolean} random - 画像シャッフルの設定
+     * @param {Boolean} responsible - レスポンシブ可否判定の設定
      */
     constructor(element, width, height, images, easing, random, responsible) {
         this.element = element;
@@ -16,14 +17,14 @@ export default class Asset {
         this.height = height;
         this.images = images;
         this.easing = easing;
-        this.sliderContainer = document.createElement('div');
+        this._sliderContainer = document.createElement('div');
         this.sliderContainer.classList.add('slider-container');
         this.random = random;
         this.responsible = responsible;
     }
 
-    get _sliderContainer() {
-        return this.sliderContainer;
+    get sliderContainer() {
+        return this._sliderContainer;
     }
 
     /**
@@ -86,10 +87,10 @@ export default class Asset {
 
             linkNode.appendChild(imageNode);
             contentNode.appendChild(linkNode);
-            this.sliderContainer.appendChild(contentNode);
-            this.sliderContainer.style.transition = transition[this.easing]
+            this._sliderContainer.appendChild(contentNode);
+            this._sliderContainer.style.transition = transition[this.easing]
         })
-        this.element.appendChild(this.sliderContainer);
+        this.element.appendChild(this._sliderContainer);
     }
 
     setContainerPotision(content, index) {
